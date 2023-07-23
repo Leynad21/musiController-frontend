@@ -12,7 +12,7 @@ const HomePage = () => {
 
     useEffect(() => {
         const useFetchRequest = () => {
-            fetch("http://127.0.0.1:8000/api/user-in-room", { credentials: 'include' })
+            fetch("https://music-controller-backend.onrender.com/api/user-in-room", { credentials: 'include' })
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);

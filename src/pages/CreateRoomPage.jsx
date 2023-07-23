@@ -30,7 +30,7 @@ const CreateRoomPage = () => {
             }),
             credentials: 'include'
         }
-        fetch('http://127.0.0.1:8000/api/create-room', requestOptions)
+        fetch('https://music-controller-backend.onrender.com/api/create-room', requestOptions)
             .then((response) => response.json())
             .then((data) => navigate('/room/' + data.code))
     }

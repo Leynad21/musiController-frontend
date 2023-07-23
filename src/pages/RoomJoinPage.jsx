@@ -31,7 +31,7 @@ const RoomJoinPage = () => {
       }),
       credentials: 'include'
     }
-    fetch("http://127.0.0.1:8000/api/join-room", requestOptions)
+    fetch("https://music-controller-backend.onrender.com/api/join-room", requestOptions)
       .then((response) => {
         if (response.ok) {
           navigate('/room/' + joinRoom.roomCode)
