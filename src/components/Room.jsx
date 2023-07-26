@@ -24,7 +24,7 @@ const Room = () => {
     const { roomCode } = useParams()
 
     const getRoomDetails = () => {
-        fetch(`https://music-controller-backend.onrender.com/api/get-room?code=${roomCode}`, { credentials: 'include' })
+        fetch(`http://127.0.0.1:8000/api/get-room?code=${roomCode}`, { credentials: 'include' })
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Error fetching room details')
@@ -57,7 +57,7 @@ const Room = () => {
     }, [])
 
     const authenticatedSpotify = () => {
-        fetch("https://music-controller-backend.onrender.com/spotify/is-authenticated", { credentials: 'include' })
+        fetch("http://127.0.0.1:8000/spotify/is-authenticated", { credentials: 'include' })
             .then((response) => response.json())
             .then((data) => {
                 setRoomSettings((prev) => {
@@ -68,7 +68,7 @@ const Room = () => {
                 })
                 console.log(data.status);
                 if (!data.status) {
-                    fetch("https://music-controller-backend.onrender.com/spotify/get-auth-url")
+                    fetch("http://127.0.0.1:8000/spotify/get-auth-url")
                         .then((response) => response.json())
                         .then((data) => {
                             window.location.replace(data.url);
@@ -78,7 +78,7 @@ const Room = () => {
     }
 
     const getCurrentSong = () => {
-        fetch("https://music-controller-backend.onrender.com/spotify/current-song", { credentials: 'include' })
+        fetch("http://127.0.0.1:8000/spotify/current-song", { credentials: 'include' })
             .then((response) => {
                 if (!response.ok) {
                     return {};
@@ -101,7 +101,7 @@ const Room = () => {
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
         }
-        fetch('https://music-controller-backend.onrender.com/api/leave-room', requestOptions)
+        fetch('http://127.0.0.1:8000/api/leave-room', requestOptions)
             .then((response) => response.json())
             .then((data) => navigate('/'))
     }
